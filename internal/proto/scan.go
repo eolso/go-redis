@@ -7,7 +7,7 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/eolso/go-redis/v9/internal/util"
+	"github.com/eolso/go-redis/internal/util"
 )
 
 // Scan parses bytes `b` to `v` with appropriate type.

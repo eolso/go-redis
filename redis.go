@@ -9,10 +9,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/eolso/go-redis/v9/internal"
-	"github.com/eolso/go-redis/v9/internal/hscan"
-	"github.com/eolso/go-redis/v9/internal/pool"
-	"github.com/eolso/go-redis/v9/internal/proto"
+	"github.com/eolso/go-redis/internal"
+	"github.com/eolso/go-redis/internal/hscan"
+	"github.com/eolso/go-redis/internal/pool"
+	"github.com/eolso/go-redis/internal/proto"
 )
 
 // Scanner internal/hscan.Scanner exposed interface.

@@ -4,7 +4,7 @@ import (
 	"context"
 	"strconv"
 
-	"github.com/eolso/go-redis/v9/internal/proto"
+	"github.com/eolso/go-redis/internal/proto"
 )
 
 type TimeseriesCmdable interface {

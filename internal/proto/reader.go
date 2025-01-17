@@ -9,7 +9,7 @@ import (
 	"math/big"
 	"strconv"
 
-	"github.com/eolso/go-redis/v9/internal/util"
+	"github.com/eolso/go-redis/internal/util"
 )
 
 // redis resp protocol data type.
