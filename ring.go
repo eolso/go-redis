@@ -11,13 +11,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/cespare/xxhash/v2"
-	"github.com/dgryski/go-rendezvous" //nolint
-
-	"github.com/redis/go-redis/v9/internal"
-	"github.com/redis/go-redis/v9/internal/hashtag"
-	"github.com/redis/go-redis/v9/internal/pool"
-	"github.com/redis/go-redis/v9/internal/rand"
+	"github.com/eolso/go-redis/v9/internal"
+	"github.com/eolso/go-redis/v9/internal/hashtag"
+	"github.com/eolso/go-redis/v9/internal/pool"
+	"github.com/eolso/go-redis/v9/internal/rand"
 )
 
 var errRingShardsDown = errors.New("redis: all ring shards are down")
@@ -28,17 +25,17 @@ type ConsistentHash interface {
 	Get(string) string
 }
 
-type rendezvousWrapper struct {
-	*rendezvous.Rendezvous
-}
-
-func (w rendezvousWrapper) Get(key string) string {
-	return w.Lookup(key)
-}
-
-func newRendezvous(shards []string) ConsistentHash {
-	return rendezvousWrapper{rendezvous.New(shards, xxhash.Sum64String)}
-}
+//type rendezvousWrapper struct {
+//	*rendezvous.Rendezvous
+//}
+//
+//func (w rendezvousWrapper) Get(key string) string {
+//	return w.Lookup(key)
+//}
+//
+//func newRendezvous(shards []string) ConsistentHash {
+//	return rendezvousWrapper{rendezvous.New(shards, xxhash.Sum64String)}
+//}
 
 //------------------------------------------------------------------------------
 
@@ -115,7 +112,7 @@ func (opt *RingOptions) init() {
 	}
 
 	if opt.NewConsistentHash == nil {
-		opt.NewConsistentHash = newRendezvous
+		panic("NewConsistentHash is required")
 	}
 
 	if opt.MaxRetries == -1 {
